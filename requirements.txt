@@ -1,9 +1,9 @@
-
-streamlit>=1.25.0
-pandas>=1.5.3
-numpy>=1.24.0
+scikit-learn
+lightgbm
+pandas
+numpy
 matplotlib
 seaborn
 joblib
 gdown
-lightgbm
+streamlit
