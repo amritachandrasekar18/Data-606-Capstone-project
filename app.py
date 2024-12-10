@@ -7,6 +7,13 @@ import joblib
 import gdown  # For downloading files from Google Drive
 import os  # For handling file paths
 
+# Set Streamlit page configuration (must be the first Streamlit command)
+st.set_page_config(
+    page_title="Fraud Detection Dashboard",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
 # Google Drive file links
 FILE_LINKS = {
     "X_train": "https://drive.google.com/uc?id=1iberDE0Lg9IZWMPCMmKXjJ4LgPokSyjm",
@@ -88,12 +95,6 @@ def predict_fraud(data):
 
 # Main Streamlit Application
 def main():
-    st.set_page_config(
-        page_title="Fraud Detection Dashboard",
-        layout="wide",
-        initial_sidebar_state="expanded",
-    )
-
     st.title("📊 Healthcare Provider Fraud Detection Dashboard")
     st.markdown("""
         ## About This Application
@@ -139,6 +140,7 @@ def main():
         plt.title("State-wise Fraud Distribution", fontsize=12)
         plt.xlabel("State", fontsize=10)
         plt.ylabel("Average Fraud Rate", fontsize=10)
+        plt.tight_layout()
         st.pyplot(plt)
 
     # Tab 3: Predictions
