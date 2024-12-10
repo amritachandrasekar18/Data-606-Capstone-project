@@ -143,6 +143,14 @@ def main():
         plt.tight_layout()
         st.pyplot(plt)
 
+        # Correlation heatmap
+        st.subheader("3️⃣ Correlation Heatmap")
+        corr_matrix = X_train.corr()  # Compute the correlation matrix
+        plt.figure(figsize=(10, 6))
+        sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f', cbar=True)
+        plt.title("Correlation Heatmap of Selected Features", fontsize=12)
+        st.pyplot(plt)
+
     # Tab 3: Predictions
     with tabs[2]:
         st.header("🔍 Predictions")
