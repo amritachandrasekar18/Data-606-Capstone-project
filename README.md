@@ -32,7 +32,7 @@ Date: 12/10/2024
 ---
 
 ## Executive Summary
-The project **Detecting Fraudulent Healthcare Providers Using Machine Learning** aims to leverage machine learning techniques to identify fraudulent behavior within Medicare claims data. Fraudulent activities such as exaggerated billing or misrepresented services are identified through patterns in claims data. The project utilizes several machine learning models including Logistic Regression, Random Forest, XGBoost, Gradient Boosting, and LightGBM. It also applies **SMOTE (Synthetic Minority Over-sampling Technique)** to tackle the class imbalance in the dataset. A **Streamlit dashboard** was developed to offer real-time fraud detection and provide interactive visual insights to healthcare administrators. 
+The project Detecting Fraudulent Healthcare Providers Using Machine Learning seeks to address the pervasive issue of fraudulent activities within Medicare claims data using advanced machine learning techniques. Healthcare fraud, including practices like inflated billing and falsified services, is a major concern that leads to financial losses and undermines the integrity of the healthcare system. By applying various machine learning models such as Logistic Regression, Random Forest, XGBoost, Gradient Boosting, and LightGBM, the project identifies patterns indicative of fraud in the claims data. Additionally, the class imbalance in the dataset is mitigated using SMOTE (Synthetic Minority Over-sampling Technique), which enhances the model’s ability to accurately detect fraudulent claims. The project also features an interactive Streamlit dashboard, which allows healthcare administrators to conduct visualize key insights, predict fraud/non-fraud facilitating more informed decision-making and improving overall fraud prevention efforts.
 
 ### Key Findings:
 - **LightGBM** achieved 98% accuracy, demonstrating its strong ability to detect fraudulent providers with minimal bias.
@@ -66,7 +66,6 @@ Healthcare fraud is a pervasive problem that drains financial resources and jeop
 
 1. **Detect fraudulent healthcare providers** using machine learning algorithms.
 2. **Build an interactive Streamlit dashboard** for real-time predictions and data visualizations.
-3. **Address the class imbalance** in the dataset using SMOTE to improve model performance.
 
 ---
 
@@ -85,18 +84,29 @@ Dataset link: [Healthcare Provider Fraud Detection Dataset on Kaggle](https://ww
 
 ## Data Cleaning
 
-- **Dropping Columns**: Columns with more than 50% missing data were removed.
-- **Merging Datasets**: Merged inpatient, outpatient, and beneficiary data using **outer joins** and combined with fraud labels.
-- **Null Handling**: Missing values were imputed using "unknown" for categorical columns and median/mode for numerical columns.
-- **Encoding**: Categorical features were label-encoded to prepare for machine learning.
+- Dropping columns that have more than 50% null values for inpatient, outpatient and beneficiary datasets individually.
+- Merging “inpatient” and “outpatient” as “merged_data” with the help of outer join function. Then merging “merged_data” with beneficiary dataset on BeneID column with outer join function as “final merged” dataset.
+- Shape of Final Merged Dataset: (558211, 46)
+- Now combining “final merged” dataset with “train dataset” on provider column with the help of inner join as “df_final”
+- Shape of df_final dataset: (558211, 47).
+- Removing columns from df_final that have more than 50%null values as they are not part of analysis.
+- Shape of df_final dataset:(558211, 34)
+- Checking for duplicate values
+- Checking for null values: AttendingPhysician 1508, DeductibleAmtPaid 899, ClmDiagnosisCode_1 10453, ClmDiagnosisCode_2 195606
+- To handle null values, “unknown” is used in place of null values for the column “AttendingPhysician” while “median” and “mode” is used for columns “DeductibleAmtPaid”,”ClmDiagnosisCode_1” and “ClmDiagnosisCode_2” respectively.
+- Converting date to datetime format
+- Performed label encoding to convert categorical features to numerical features for making data ready for visualizations![image](https://github.com/user-attachments/assets/10308d2b-7b4c-4fd1-bcea-295b09a1080a)
+
 
 ---
 
 ## Challenges
 
 - **Class Imbalance**: Fraudulent claims are a minority class, leading to biased models.
-- **Missing Data**: Handling null and missing values across multiple datasets.
-- **Complexity of Claims**: Fraudulent patterns are subtle and complex, making them difficult to detect.
+- <img width="274" alt="image" src="https://github.com/user-attachments/assets/ba7e6c0a-d05b-4314-9cdd-cc3a1af1dc35">
+- <img width="206" alt="image" src="https://github.com/user-attachments/assets/c6fb50fe-1dbc-4f94-8a27-cf7928c99f6f">
+
+
 
 ---
 
@@ -104,9 +114,34 @@ Dataset link: [Healthcare Provider Fraud Detection Dataset on Kaggle](https://ww
 
 ### Exploratory Data Analysis (EDA)
 EDA was conducted to understand the distribution of features and identify important patterns. Visualization techniques were used to explore class distribution and correlations between features.
+<img width="396" alt="image" src="https://github.com/user-attachments/assets/e3743aad-69e8-4ac8-94f2-ecab47a6a223">
+<img width="396" alt="image" src="https://github.com/user-attachments/assets/51634151-e4b7-4243-91e9-c9c1d4620a9c">
+<img width="357" alt="image" src="https://github.com/user-attachments/assets/983764b7-81a1-4107-a4f6-c0b7bf0a83a4">
+<img width="375" alt="image" src="https://github.com/user-attachments/assets/9743773f-904f-44d1-81a6-4445b5dfc51a">
+<img width="394" alt="image" src="https://github.com/user-attachments/assets/b2d027c9-b623-49b9-9885-59d593ed8d3b">
+<img width="298" alt="image" src="https://github.com/user-attachments/assets/30402ebb-1284-487f-9e65-edb65445106b">
+
+
+
+
 
 ### Feature Engineering
 Key features such as **ProviderFraudRate** and **ClaimsPerProvider** were engineered based on domain knowledge and the dataset's characteristics.
+<img width="436" alt="image" src="https://github.com/user-attachments/assets/3022003a-3fc2-4f6c-b48c-a88312715212">
+- CostPerDay: This feature is moderately correlated with potential fraud (0.11) and can help identify unusually high costs per day for providers, which could indicate fraud.
+- DeductibleRatio: With a very low correlation to potential fraud, this feature may be less impactful in identifying fraud but could provide additional context on healthcare cost structures.
+- ChronicConditionCount: This feature has a weak negative correlation with potential fraud, suggesting it might not strongly indicate fraudulent behavior but could be useful in understanding patient risk.
+- GenderCostRatio: Shows a weak positive correlation with potential fraud (0.09), which might be useful for detecting anomalies in cost allocation across genders.
+- ClaimsPerProvider: This feature strongly correlates with potential fraud (0.33), as a higher number of claims per provider could signal fraudulent activity.
+- AvgProviderReimbursement: Correlated at 0.21 with potential fraud, this feature is relevant for detecting discrepancies between expected and actual reimbursements, indicating potential fraud.
+- ProviderFraudRate: This column is highly correlated with potential fraud (0.85), making it one of the most critical features for detecting fraudulent behavior in healthcare providers.
+- CostPerCoverageMonth: Strong correlation with potential fraud (0.74), suggesting that unusually high costs per coverage month could be a strong indicator of fraudulent activity.
+- DurationReimbursement: With a weaker correlation to potential fraud (0.05), this feature might not be highly indicative of fraud but could still be valuable in a broader fraud detection model.
+- StateFraudRate: While not highly correlated with potential fraud, this feature (0.28) provides geographic context, potentially useful for understanding state-level fraud trends.
+- PotentialFraud: This is the target variable in your analysis, with a correlation of 1, making it central to the project for identifying fraudulent healthcare providers.
+
+### Feature Importance Analysis
+
 
 ### Modeling and Analysis
 Several machine learning models were trained, including Logistic Regression, Random Forest, XGBoost, Gradient Boosting, and LightGBM. **LightGBM** was chosen for its excellent performance, especially in handling imbalanced data.
