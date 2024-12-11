@@ -250,7 +250,6 @@ The Streamlit app was deployed on the **Streamlit Community Cloud**, making it e
 
 ---
 ## Project links
-## Project Links
 
 ### Data Merging, Cleaning, EDA, and ML Models
 - [Google Colab Notebook: Data Processing and Machine Learning](https://colab.research.google.com/drive/1FB09GuFramK_HQWfzsPQPdcUB4zEtXGN?usp=sharing)
