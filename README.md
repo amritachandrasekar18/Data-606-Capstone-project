@@ -70,9 +70,8 @@ Healthcare fraud is a pervasive problem that drains financial resources and jeop
 ---
 
 ## Objectives
-
-1. **Detect fraudulent healthcare providers** using machine learning algorithms.
-2. **Build an interactive Streamlit dashboard** for real-time predictions and data visualizations.
+- **Detect fraudulent healthcare providers** using machine learning algorithms.
+- **Build an interactive Streamlit dashboard** for real-time predictions and data visualizations.
 
 ---
 
@@ -113,12 +112,12 @@ The dataset for this project is too large to be uploaded directly to GitHub. You
 
 ## Challenges
 
-- **Class Imbalance**: Fraudulent claims are a minority class, leading to biased models.
-- <img width="274" alt="image" src="https://github.com/user-attachments/assets/ba7e6c0a-d05b-4314-9cdd-cc3a1af1dc35">
+**Class Imbalance**: Fraudulent claims are a minority class, leading to biased models.
+<img width="274" alt="image" src="https://github.com/user-attachments/assets/ba7e6c0a-d05b-4314-9cdd-cc3a1af1dc35">
 
 SMOTE is used to handle class imbalance. SMOTE (Synthetic Minority Over-sampling Technique) is a technique used to address class imbalance by generating synthetic samples for the minority class. It works by selecting a sample from the minority class, finding its nearest neighbors, and then creating new samples by interpolating between the original sample and its neighbors. This helps balance the dataset, preventing the model from being biased toward the majority class.After SMOTE, combined features (X_resampled) and target (y_resampled) into a single data frame as “balanced_df”  having shape (690830, 32).
 
-- <img width="206" alt="image" src="https://github.com/user-attachments/assets/c6fb50fe-1dbc-4f94-8a27-cf7928c99f6f">
+<img width="206" alt="image" src="https://github.com/user-attachments/assets/c6fb50fe-1dbc-4f94-8a27-cf7928c99f6f">
 
 
 
