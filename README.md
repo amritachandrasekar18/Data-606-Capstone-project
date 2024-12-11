@@ -48,6 +48,13 @@ Healthcare fraud, especially within Medicare, leads to significant financial los
 
 ---
 
+## Problem Statement
+In the U.S. healthcare system, fraud costs taxpayers billions of dollars every year. A real-world example is the case of a healthcare provider who submits fraudulent Medicare claims for services that were never provided, such as billing for unnecessary medical tests or overcharging for treatments. In 2019, it was reported that healthcare fraud led to losses of over $60 billion in the U.S. alone. This fraudulent behavior not only strains the financial stability of healthcare systems but also puts patient safety at risk, as resources are diverted away from legitimate care.
+
+Traditional fraud detection methods, which often rely on manual audits and rule-based checks, struggle to keep up with the sheer volume and complexity of claims data, making it difficult to identify subtle patterns of fraud. This project aims to harness machine learning to automate the process, providing a more efficient, scalable, and accurate solution for detecting fraudulent healthcare providers, ultimately reducing financial losses and ensuring the quality and integrity of care provided to patients.
+
+---
+
 ## Research Questions
 
 - **How effectively can machine learning algorithms identify potentially fraudulent Medicare providers based on claims data?**
@@ -241,4 +248,18 @@ The Streamlit app was deployed on the **Streamlit Community Cloud**, making it e
 1. **Bauder, R.A., & Khoshgoftaar, T.M. (2017)**. *Medicare fraud detection using machine learning methods.* IEEE ICMLA.
 2. **Garmdareh, M.S., et al. (2023)**. *A Machine Learning-based Approach for Medical Insurance Anomaly Detection by Predicting Indirect Outpatients' Claim Price.* IEEE ICWR.
 
+---
+## Project links
+## Project Links
+
+### Data Merging, Cleaning, EDA, and ML Models
+- [Google Colab Notebook: Data Processing and Machine Learning](https://colab.research.google.com/drive/1FB09GuFramK_HQWfzsPQPdcUB4zEtXGN?usp=sharing)
+
+### Additional Colab Notebooks
+- [Notebook 2: Further Analysis or Model Tuning](https://colab.research.google.com/drive/1-Nd6d3xuog2EPYfJ3EoWyfh3mE_6RTMD?usp=chrome_ntp)
+- [Notebook 3: Additional Visualizations or Data Exploration](https://colab.research.google.com/drive/1Flk6lF3OfQR4pJCm_cn3AVsGVold49TF?usp=chrome_ntp)
+- [Notebook 4: Final Model or Reporting](https://colab.research.google.com/drive/1hmXbl07e4LIiAs2qVi24uVYqtMmaCGY7?usp=chrome_ntp)
+
+### Streamlit App
+- [Interactive Streamlit App for Visualization](https://amritachandrasekar18-data-690-capstone-project-app-pwbhji.streamlit.app/)
 
