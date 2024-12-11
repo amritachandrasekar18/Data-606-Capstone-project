@@ -18,8 +18,7 @@ Healthcare fraud results in billions of dollars in losses each year. Providers m
 ## Objectives
 - **Detect fraudulent healthcare providers** using machine learning techniques.
 - **Build an interactive Streamlit dashboard** for real-time fraud predictions and data visualizations.
-- **Handle class imbalance** in the dataset using **SMOTE** to improve model accuracy.
-- **Evaluate various machine learning models** to determine the most effective approach for fraud detection.
+
 
 ## Data Collection and Description
 The dataset used for this project is sourced from [Kaggle](https://www.kaggle.com/datasets/rohitrox/healthcare-provider-fraud-detection-analysis/data), which includes **Medicare claims data** containing inpatient, outpatient, and beneficiary details. It also contains labeled examples of fraud and non-fraudulent claims.
@@ -42,7 +41,7 @@ The dataset used for this project is sourced from [Kaggle](https://www.kaggle.co
 - **LightGBM** was selected as the best-performing model due to its high accuracy and ability to handle imbalanced data.
 
 ### Streamlit Dashboard
-- The **Streamlit dashboard** was developed to provide real-time predictions, allowing users to interact with the model and visualize fraud patterns and features.
+- The **Streamlit dashboard** was developed to provide predictions, allowing users to interact with the model and visualize fraud patterns and features.
 
 ## Key Findings
 - **LightGBM** achieved an **accuracy of 98%**, with high **precision** and **recall**.
@@ -50,7 +49,7 @@ The dataset used for this project is sourced from [Kaggle](https://www.kaggle.co
 - **SMOTE** significantly improved model performance by addressing the class imbalance issue.
 
 ## Results and Insights
-- The **LightGBM model** outperformed other models, demonstrating its effectiveness in fraud detection.
+- The **LightGBM model** outperformed other models, WITH accuracy 98% demonstrating its effectiveness in fraud detection.
 - The **Streamlit dashboard** allowed users to interact with the data, view fraud distributions, and make real-time predictions, providing valuable insights for healthcare administrators.
 
 ## Conclusion
