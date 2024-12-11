@@ -262,13 +262,12 @@ The Streamlit app was deployed on the **Streamlit Community Cloud**, making it e
 ---
 ## Project links
 
-### Data Merging, Cleaning, EDA, and ML Models
 - [Google Colab Notebook: Data Merging](https://colab.research.google.com/drive/1FB09GuFramK_HQWfzsPQPdcUB4zEtXGN?usp=sharing)
 
 ### Additional Colab Notebooks
-- [Notebook 2: Data Cleaning](https://colab.research.google.com/drive/1-Nd6d3xuog2EPYfJ3EoWyfh3mE_6RTMD?usp=chrome_ntp)
-- [Notebook 3: Data Visualizations](https://colab.research.google.com/drive/1Flk6lF3OfQR4pJCm_cn3AVsGVold49TF?usp=chrome_ntp)
-- [Notebook 4: Machine Learning Model ](https://colab.research.google.com/drive/1hmXbl07e4LIiAs2qVi24uVYqtMmaCGY7?usp=chrome_ntp)
+- [Google Colab Notebook 2: Data Cleaning](https://colab.research.google.com/drive/1-Nd6d3xuog2EPYfJ3EoWyfh3mE_6RTMD?usp=chrome_ntp)
+- [Google Colab Notebook 3: Data Visualizations](https://colab.research.google.com/drive/1Flk6lF3OfQR4pJCm_cn3AVsGVold49TF?usp=chrome_ntp)
+- [Google Colab Notebook 4: Machine Learning Model ](https://colab.research.google.com/drive/1hmXbl07e4LIiAs2qVi24uVYqtMmaCGY7?usp=chrome_ntp)
 
 ### Streamlit App
 - [Interactive Streamlit App for Visualization](https://amritachandrasekar18-data-690-capstone-project-app-pwbhji.streamlit.app/)
