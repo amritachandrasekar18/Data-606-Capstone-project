@@ -27,7 +27,7 @@ Date: 12/10/2024
 - [Conclusions and Recommendations](#conclusions-and-recommendations)
 - [Future Work](#future-work)
 - [References](#references)
-- [Appendices](#appendices)
+- [Project links](#project-links)
 
 ---
 
@@ -105,8 +105,7 @@ The dataset for this project is too large to be uploaded directly to GitHub. You
 - Checking for null values: AttendingPhysician 1508, DeductibleAmtPaid 899, ClmDiagnosisCode_1 10453, ClmDiagnosisCode_2 195606
 - To handle null values, “unknown” is used in place of null values for the column “AttendingPhysician” while “median” and “mode” is used for columns “DeductibleAmtPaid”,”ClmDiagnosisCode_1” and “ClmDiagnosisCode_2” respectively.
 - Converting date to datetime format
-- Performed label encoding to convert categorical features to numerical features for making data ready for visualizations![image](https://github.com/user-attachments/assets/10308d2b-7b4c-4fd1-bcea-295b09a1080a)
-
+- Performed label encoding to convert categorical features to numerical features for making data ready for visualizations
 
 ---
 
@@ -131,10 +130,15 @@ SMOTE is used to handle class imbalance. SMOTE (Synthetic Minority Over-sampling
 EDA was conducted to understand the distribution of features and identify important patterns. Visualization techniques were used to explore class distribution and correlations between features.
 
 <img width="396" alt="image" src="https://github.com/user-attachments/assets/e3743aad-69e8-4ac8-94f2-ecab47a6a223">
+
 <img width="396" alt="image" src="https://github.com/user-attachments/assets/51634151-e4b7-4243-91e9-c9c1d4620a9c">
+
 <img width="357" alt="image" src="https://github.com/user-attachments/assets/983764b7-81a1-4107-a4f6-c0b7bf0a83a4">
+
 <img width="375" alt="image" src="https://github.com/user-attachments/assets/9743773f-904f-44d1-81a6-4445b5dfc51a">
+
 <img width="394" alt="image" src="https://github.com/user-attachments/assets/b2d027c9-b623-49b9-9885-59d593ed8d3b">
+
 <img width="298" alt="image" src="https://github.com/user-attachments/assets/30402ebb-1284-487f-9e65-edb65445106b">
 
 
@@ -164,7 +168,6 @@ Key features such as **ProviderFraudRate** and **ClaimsPerProvider** were engine
 The process begins by preparing the data, where categorical variables are one-hot encoded, and the dataset is split into training and testing sets. The presence of infinite and NaN values is checked and handled by replacing infinite values with the column maximum. A Random Forest model is then trained on the data, and feature importance is computed to identify the top features most strongly correlated with the target variable "PotentialFraud.The top features are displayed to guide model implementation. This analysis is essential for further model development and integration into a Streamlit dashboard for interactive fraud detection.
 
 <img width="356" alt="image" src="https://github.com/user-attachments/assets/12926589-f2fc-4788-98b8-9c24eedd67b0">
-
 
 
 
