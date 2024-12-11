@@ -1,62 +1,182 @@
 # Detecting Fraudulent Healthcare Providers Using Machine Learning
 
-## Overview
-This project aims to develop a machine learning-based solution for detecting fraudulent healthcare providers using Medicare claims data. The project leverages advanced data analysis techniques, including **SMOTE** for addressing class imbalance, and various machine learning models to identify fraudulent behaviors. The model predictions are presented in an interactive **Streamlit dashboard** that provides real-time insights and decision-making support for healthcare administrators.
+**Capstone Project in Data Science - DATA 606**  
+Professor: Zeynep Kacar  
+By: **Amrita Chandrasekar (NH53017)**  
+Date: 12/10/2024  
 
-## Problem Statement
-In the U.S. healthcare system, fraud costs taxpayers billions of dollars every year. A real-world example is the case of a healthcare provider who submits fraudulent Medicare claims for services that were never provided, such as billing for unnecessary medical tests or overcharging for treatments. In 2019, it was reported that healthcare fraud led to losses of over $60 billion in the U.S. alone. This fraudulent behavior not only strains the financial stability of healthcare systems but also puts patient safety at risk, as resources are diverted away from legitimate care.
-Traditional fraud detection methods, which often rely on manual audits and rule-based checks, struggle to keep up with the sheer volume and complexity of claims data, making it difficult to identify subtle patterns of fraud. This project aims to harness machine learning to automate the process, providing a more efficient, scalable, and accurate solution for detecting fraudulent healthcare providers, ultimately reducing financial losses and ensuring the quality and integrity of care provided to patients.
+## Table of Contents
+- [Executive Summary](#executive-summary)
+- [Introduction](#introduction)
+- [Research Questions](#research-questions)
+- [Background and Context](#background-and-context)
+- [Objectives](#objectives)
+- [Data Collection and Description](#data-collection-and-description)
+- [Data Cleaning](#data-cleaning)
+- [Challenges](#challenges)
+- [Methodology](#methodology)
+  - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+  - [Feature Engineering](#feature-engineering)
+  - [Modeling and Analysis](#modeling-and-analysis)
+  - [Models Comparison](#models-comparison)
+- [Streamlit Dashboard](#streamlit-dashboard)
+  - [Key Features](#key-features)
+  - [Building the Dashboard](#building-the-dashboard)
+  - [Deployment](#deployment)
+- [Discussion](#discussion)
+- [Conclusions and Recommendations](#conclusions-and-recommendations)
+- [Future Work](#future-work)
+- [References](#references)
+- [Appendices](#appendices)
+
+---
+
+## Executive Summary
+The project **Detecting Fraudulent Healthcare Providers Using Machine Learning** aims to leverage machine learning techniques to identify fraudulent behavior within Medicare claims data. Fraudulent activities such as exaggerated billing or misrepresented services are identified through patterns in claims data. The project utilizes several machine learning models including Logistic Regression, Random Forest, XGBoost, Gradient Boosting, and LightGBM. It also applies **SMOTE (Synthetic Minority Over-sampling Technique)** to tackle the class imbalance in the dataset. A **Streamlit dashboard** was developed to offer real-time fraud detection and provide interactive visual insights to healthcare administrators. 
+
+### Key Findings:
+- **LightGBM** achieved 98% accuracy, demonstrating its strong ability to detect fraudulent providers with minimal bias.
+- Important features such as **ProviderFraudRate** and **ClaimsPerProvider** were identified as key indicators of fraud.
+- **SMOTE** significantly enhanced model performance by addressing class imbalance in the dataset.
+- The **Streamlit dashboard** provided an intuitive interface for real-time fraud prediction and decision-making.
+
+---
+
+## Introduction
+
+Healthcare fraud, especially within Medicare, leads to significant financial losses and affects the quality of care. Traditional fraud detection methods are ineffective due to the high volume and complexity of claims data. This project applies **machine learning algorithms** to automate fraud detection, offering a scalable and efficient solution. An interactive **Streamlit dashboard** was built to visualize fraud patterns and allow real-time predictions, enabling healthcare administrators to make informed decisions swiftly.
+
+---
 
 ## Research Questions
-1. **How effectively can machine learning algorithms identify potentially fraudulent Medicare providers based on claims data?**
-2. **Which features in the dataset are most indicative of fraudulent behavior?**
-3. **How can we address the class imbalance in the dataset, where fraudulent claims are far fewer than legitimate ones?**
+
+- **How effectively can machine learning algorithms identify potentially fraudulent Medicare providers based on claims data?**
+- **Which features in the dataset are most indicative of fraudulent behavior?**
+- **How can we address the class imbalance in the dataset, where fraudulent claims are far fewer than legitimate ones?**
+
+---
 
 ## Background and Context
-Healthcare fraud results in billions of dollars in losses each year. Providers may submit false claims for non-existent services, overstate charges, or alter billing codes. Traditional fraud detection relies on manual audits, which are time-consuming and ineffective in catching subtle fraud patterns. This project aims to automate fraud detection by applying **supervised machine learning models**, which can identify hidden patterns in large-scale claims data and improve the efficiency of fraud detection processes.
+
+Healthcare fraud is a pervasive problem that drains financial resources and jeopardizes patient care. The challenge lies in identifying subtle fraud patterns in massive datasets. By applying machine learning, particularly **supervised learning models**, this project aims to create a system that can efficiently predict fraudulent claims. The dataset used includes **inpatient**, **outpatient**, and **beneficiary** data, each containing features related to healthcare providers, services rendered, and claims.
+
+---
 
 ## Objectives
-- **Detect fraudulent healthcare providers** using machine learning techniques.
-- **Build an interactive Streamlit dashboard** for real-time fraud predictions and data visualizations.
 
+1. **Detect fraudulent healthcare providers** using machine learning algorithms.
+2. **Build an interactive Streamlit dashboard** for real-time predictions and data visualizations.
+3. **Address the class imbalance** in the dataset using SMOTE to improve model performance.
+
+---
 
 ## Data Collection and Description
-The dataset used for this project is sourced from [Kaggle](https://www.kaggle.com/datasets/rohitrox/healthcare-provider-fraud-detection-analysis/data), which includes **Medicare claims data** containing inpatient, outpatient, and beneficiary details. It also contains labeled examples of fraud and non-fraudulent claims.
 
-### Dataset Components:
-- **Inpatient Data**: Claims filed for hospitalized patients, including admission and discharge dates, diagnosis codes, and procedure codes.
-- **Outpatient Data**: Claims filed for outpatient services.
-- **Beneficiary Data**: Includes beneficiary KYC details, health conditions, and regional information.
-- **Fraud Labels**: Labeled data indicating whether a provider is flagged as fraudulent or non-fraudulent.
+The dataset was sourced from **Kaggle** and includes a range of claims data:
+
+- **Inpatient Data**: Claims for patients admitted to hospitals, including admission/discharge dates and diagnosis codes.
+- **Outpatient Data**: Claims for patients who received outpatient services.
+- **Beneficiary Data**: Demographic and health condition information for each Medicare beneficiary.
+- **Fraud Labels**: Labeled data indicating whether a provider is fraudulent or not.
+
+Dataset link: [Healthcare Provider Fraud Detection Dataset on Kaggle](https://www.kaggle.com/datasets/rohitrox/healthcare-provider-fraud-detection-analysis/data)
+
+---
+
+## Data Cleaning
+
+- **Dropping Columns**: Columns with more than 50% missing data were removed.
+- **Merging Datasets**: Merged inpatient, outpatient, and beneficiary data using **outer joins** and combined with fraud labels.
+- **Null Handling**: Missing values were imputed using "unknown" for categorical columns and median/mode for numerical columns.
+- **Encoding**: Categorical features were label-encoded to prepare for machine learning.
+
+---
+
+## Challenges
+
+- **Class Imbalance**: Fraudulent claims are a minority class, leading to biased models.
+- **Missing Data**: Handling null and missing values across multiple datasets.
+- **Complexity of Claims**: Fraudulent patterns are subtle and complex, making them difficult to detect.
+
+---
 
 ## Methodology
-### Data Preprocessing
-- **Merging Datasets**: Merged inpatient, outpatient, and beneficiary datasets using outer joins, followed by an inner join with fraud labels.
-- **Handling Missing Values**: Filled missing values for specific columns using appropriate methods (e.g., "unknown" for categorical features, median for numerical values).
-- **Feature Engineering**: Created additional features such as **ProviderFraudRate**, **ClaimsPerProvider**, and others relevant to fraud detection.
 
-### Model Development
-- **SMOTE** was applied to handle class imbalance, improving model performance.
-- Multiple machine learning models were tested, including **Logistic Regression**, **Random Forest**, **XGBoost**, **Gradient Boosting**, and **LightGBM**.
-- **LightGBM** was selected as the best-performing model due to its high accuracy and ability to handle imbalanced data.
+### Exploratory Data Analysis (EDA)
+EDA was conducted to understand the distribution of features and identify important patterns. Visualization techniques were used to explore class distribution and correlations between features.
 
-### Streamlit Dashboard
-- The **Streamlit dashboard** was developed to provide predictions, allowing users to interact with the model and visualize fraud patterns and features.
+### Feature Engineering
+Key features such as **ProviderFraudRate** and **ClaimsPerProvider** were engineered based on domain knowledge and the dataset's characteristics.
 
-## Key Findings
-- **LightGBM** achieved an **accuracy of 98%**, with high **precision** and **recall**.
-- **ProviderFraudRate** and **ClaimsPerProvider** were identified as the most significant features for detecting fraud.
-- **SMOTE** significantly improved model performance by addressing the class imbalance issue.
+### Modeling and Analysis
+Several machine learning models were trained, including Logistic Regression, Random Forest, XGBoost, Gradient Boosting, and LightGBM. **LightGBM** was chosen for its excellent performance, especially in handling imbalanced data.
 
-## Results and Insights
-- The **LightGBM model** outperformed other models, WITH accuracy 98% demonstrating its effectiveness in fraud detection.
-- The **Streamlit dashboard** allowed users to interact with the data, view fraud distributions, and make real-time predictions, providing valuable insights for healthcare administrators.
+---
 
-## Conclusion
-This project successfully demonstrated the potential of machine learning for automating the detection of healthcare fraud. By leveraging **LightGBM** and **Streamlit**, the solution offers a scalable and efficient approach to identifying fraudulent healthcare providers in real-time. The model’s high accuracy and interactive dashboard provide a valuable tool for healthcare administrators to improve decision-making and prevent fraud.
+## Models Comparison
 
-## Future Scope
-- **Anomaly Detection**: Exploring unsupervised learning techniques to detect emerging fraud patterns.
-- **Real-time Integration**: Integrating the model with live healthcare claim systems for immediate fraud detection.
+- **LightGBM** demonstrated the highest performance across multiple metrics:
+  - **Recall**: 97.26%
+  - **F1-Score**: 0.9832
+  - **AUC**: 0.9981
+- LightGBM is particularly effective for fraud detection due to its ability to handle class imbalance and its strong generalization performance.
+
+---
+
+## Streamlit Dashboard
+
+### Key Features
+- **Real-time fraud predictions**: Users can input data to get immediate predictions on whether a healthcare provider is fraudulent.
+- **Visualizations**:
+  - **Fraud vs. Non-Fraud distribution**
+  - **State-wise fraud rates**
+  - **Correlation heatmap** for key features
+- **User-Friendly Interface**: The dashboard is intuitive and requires no coding experience.
+
+### Building the Dashboard
+- **Data Integration**: Data was preprocessed, merged, and ready for integration into Streamlit.
+- **Model Integration**: The trained LightGBM model was incorporated using **joblib** for predictions.
+
+### Deployment
+The Streamlit app was deployed on the **Streamlit Community Cloud**, making it easily accessible via a web link.
+
+---
+
+## Discussion
+
+### Interpretation of Results
+- The LightGBM model’s high performance (98% accuracy) and the use of **SMOTE** for class balancing were pivotal in achieving strong results.
+- The **Streamlit dashboard** enhanced the model's usability, providing healthcare professionals with quick insights.
+
+### Comparison with Existing Literature
+- The findings align with other studies on healthcare fraud detection, which emphasize the importance of machine learning and handling class imbalance.
+
+### Unexpected Findings
+- The significance of **ProviderFraudRate** in detecting fraud was unexpected and highlights the value of feature engineering.
+
+---
+
+## Conclusions and Recommendations
+
+### Key Findings
+- **LightGBM** achieved an accuracy of 98%, with **ProviderFraudRate** being the most critical feature.
+- SMOTE improved performance by addressing class imbalance.
+
+### Recommendations
+- Implement continuous fraud monitoring using the LightGBM model.
+- Expand features with additional data sources for better fraud detection.
+
+---
+
+## Future Work
+
+1. **Anomaly Detection**: Incorporate unsupervised models to detect unknown fraud patterns.
+2. **Real-time Integration**: Integrate the model with live claim systems for faster fraud detection.
+
+---
+
+## References
+1. **Bauder, R.A., & Khoshgoftaar, T.M. (2017)**. *Medicare fraud detection using machine learning methods.* IEEE ICMLA.
+2. **Garmdareh, M.S., et al. (2023)**. *A Machine Learning-based Approach for Medical Insurance Anomaly Detection by Predicting Indirect Outpatients' Claim Price.* IEEE ICWR.
 
 
