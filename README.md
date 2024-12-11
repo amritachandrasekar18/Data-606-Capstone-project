@@ -114,6 +114,7 @@ Dataset link: [Healthcare Provider Fraud Detection Dataset on Kaggle](https://ww
 
 ### Exploratory Data Analysis (EDA)
 EDA was conducted to understand the distribution of features and identify important patterns. Visualization techniques were used to explore class distribution and correlations between features.
+
 <img width="396" alt="image" src="https://github.com/user-attachments/assets/e3743aad-69e8-4ac8-94f2-ecab47a6a223">
 <img width="396" alt="image" src="https://github.com/user-attachments/assets/51634151-e4b7-4243-91e9-c9c1d4620a9c">
 <img width="357" alt="image" src="https://github.com/user-attachments/assets/983764b7-81a1-4107-a4f6-c0b7bf0a83a4">
@@ -127,7 +128,9 @@ EDA was conducted to understand the distribution of features and identify import
 
 ### Feature Engineering
 Key features such as **ProviderFraudRate** and **ClaimsPerProvider** were engineered based on domain knowledge and the dataset's characteristics.
+
 <img width="436" alt="image" src="https://github.com/user-attachments/assets/3022003a-3fc2-4f6c-b48c-a88312715212">
+
 - CostPerDay: This feature is moderately correlated with potential fraud (0.11) and can help identify unusually high costs per day for providers, which could indicate fraud.
 - DeductibleRatio: With a very low correlation to potential fraud, this feature may be less impactful in identifying fraud but could provide additional context on healthcare cost structures.
 - ChronicConditionCount: This feature has a weak negative correlation with potential fraud, suggesting it might not strongly indicate fraudulent behavior but could be useful in understanding patient risk.
@@ -140,15 +143,39 @@ Key features such as **ProviderFraudRate** and **ClaimsPerProvider** were engine
 - StateFraudRate: While not highly correlated with potential fraud, this feature (0.28) provides geographic context, potentially useful for understanding state-level fraud trends.
 - PotentialFraud: This is the target variable in your analysis, with a correlation of 1, making it central to the project for identifying fraudulent healthcare providers.
 
+<img width="356" alt="image" src="https://github.com/user-attachments/assets/b28d1cd4-fd73-4c51-833d-b946d6cc7c41">
+
 ### Feature Importance Analysis
+The process begins by preparing the data, where categorical variables are one-hot encoded, and the dataset is split into training and testing sets. The presence of infinite and NaN values is checked and handled by replacing infinite values with the column maximum. A Random Forest model is then trained on the data, and feature importance is computed to identify the top features most strongly correlated with the target variable "PotentialFraud.The top features are displayed to guide model implementation. This analysis is essential for further model development and integration into a Streamlit dashboard for interactive fraud detection.
+
+<img width="356" alt="image" src="https://github.com/user-attachments/assets/12926589-f2fc-4788-98b8-9c24eedd67b0">
+
+
 
 
 ### Modeling and Analysis
 Several machine learning models were trained, including Logistic Regression, Random Forest, XGBoost, Gradient Boosting, and LightGBM. **LightGBM** was chosen for its excellent performance, especially in handling imbalanced data.
+### Logistic Regression
+<img width="188" alt="image" src="https://github.com/user-attachments/assets/81f4973d-231d-4d93-9236-c755c6ea3f9a">
 
----
+### Random Forest
+<img width="183" alt="image" src="https://github.com/user-attachments/assets/29acaefe-f2da-4067-b426-2c8cf2aa78d1">
+
+### XGBoost
+<img width="170" alt="image" src="https://github.com/user-attachments/assets/ad07376a-b9c7-492d-bd82-8e1455875add">
+
+### Lightgbm
+<img width="196" alt="image" src="https://github.com/user-attachments/assets/df1861ad-0335-4a35-bb72-219ceca08972">
+
+### gradient boosting
+<img width="194" alt="image" src="https://github.com/user-attachments/assets/0c489e76-5676-4a43-bde3-f2528391a807">
+
 
 ## Models Comparison
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/d80d0312-2bfe-488e-82af-4fc046e68c2f">
+
+<img width="286" alt="image" src="https://github.com/user-attachments/assets/846bea8a-8765-4640-843d-0dcfdc23ba06">
+
 
 - **LightGBM** demonstrated the highest performance across multiple metrics:
   - **Recall**: 97.26%
@@ -156,12 +183,12 @@ Several machine learning models were trained, including Logistic Regression, Ran
   - **AUC**: 0.9981
 - LightGBM is particularly effective for fraud detection due to its ability to handle class imbalance and its strong generalization performance.
 
----
+
 
 ## Streamlit Dashboard
 
 ### Key Features
-- **Real-time fraud predictions**: Users can input data to get immediate predictions on whether a healthcare provider is fraudulent.
+- **Fraud predictions**: Users can input data to get immediate predictions on whether a healthcare provider is fraudulent.
 - **Visualizations**:
   - **Fraud vs. Non-Fraud distribution**
   - **State-wise fraud rates**
