@@ -130,20 +130,12 @@ SMOTE is used to handle class imbalance. SMOTE (Synthetic Minority Over-sampling
 ### Exploratory Data Analysis (EDA)
 EDA was conducted to understand the distribution of features and identify important patterns. Visualization techniques were used to explore class distribution and correlations between features.
 
-<img width="396" alt="image" src="https://github.com/user-attachments/assets/e3743aad-69e8-4ac8-94f2-ecab47a6a223">
-
-<img width="396" alt="image" src="https://github.com/user-attachments/assets/51634151-e4b7-4243-91e9-c9c1d4620a9c">
-
-<img width="357" alt="image" src="https://github.com/user-attachments/assets/983764b7-81a1-4107-a4f6-c0b7bf0a83a4">
-
-<img width="375" alt="image" src="https://github.com/user-attachments/assets/9743773f-904f-44d1-81a6-4445b5dfc51a">
-
-<img width="394" alt="image" src="https://github.com/user-attachments/assets/b2d027c9-b623-49b9-9885-59d593ed8d3b">
-
-<img width="298" alt="image" src="https://github.com/user-attachments/assets/30402ebb-1284-487f-9e65-edb65445106b">
-
-
-
+![Image 1](https://github.com/user-attachments/assets/e3743aad-69e8-4ac8-94f2-ecab47a6a223)
+![Image 2](https://github.com/user-attachments/assets/51634151-e4b7-4243-91e9-c9c1d4620a9c)
+![Image 3](https://github.com/user-attachments/assets/983764b7-81a1-4107-a4f6-c0b7bf0a83a4)
+![Image 4](https://github.com/user-attachments/assets/9743773f-904f-44d1-81a6-4445b5dfc51a)
+![Image 5](https://github.com/user-attachments/assets/b2d027c9-b623-49b9-9885-59d593ed8d3b)
+![Image 6](https://github.com/user-attachments/assets/30402ebb-1284-487f-9e65-edb65445106b)
 
 
 ### Feature Engineering
@@ -250,7 +242,7 @@ This project lays the foundation for an efficient, automated healthcare fraud de
 ## Results and Insights
 
 ### 1. Model Performance and Accuracy
-- **LightGBM Outperforms Other Models**:  
+- **LightGBM Outperforms Other Models**
   The LightGBM model achieved an overall **accuracy of 98%**, with a balanced **F1-score of 0.98**, indicating strong predictive capabilities for both fraudulent and non-fraudulent healthcare providers. This suggests that LightGBM is highly reliable for detecting fraud with minimal bias, making it well-suited for real-world deployment in fraud detection systems.
 
 - **Key Metrics**
@@ -265,7 +257,7 @@ This project lays the foundation for an efficient, automated healthcare fraud de
   After applying SMOTE, the dataset became more balanced, preventing the model from being biased towards the majority class (non-fraudulent claims). This ensures that the model can detect fraud with higher sensitivity.
 
 ### 3. Feature Importance and Insights
-- **Critical Fraud Indicators**:  
+- **Critical Fraud Indicators**
   Feature engineering revealed that certain features, particularly **ProviderFraudRate** (0.85 correlation with fraud), **ClaimsPerProvider** (0.33 correlation with fraud), and **CostPerCoverageMonth** (0.74 correlation with fraud), are the strongest indicators of fraudulent behavior.
 
   - **ProviderFraudRate**: A high **ProviderFraudRate** indicates that a provider has a history of submitting fraudulent claims, making it a key indicator for fraud detection.
@@ -280,7 +272,7 @@ This project lays the foundation for an efficient, automated healthcare fraud de
   - **Data Visualizations**: The dashboard displays key visualizations like fraud distribution by state, feature importance, and fraud vs. non-fraud counts. These visualizations help stakeholders better understand fraud patterns and make data-driven decisions in a user-friendly format.
 
 ### 5. Practical and Financial Impact
-- **Cost Reduction**:  
+- **Cost Reduction**
   By detecting fraudulent healthcare providers early, the model can prevent financial losses from fraudulent claims. The **98% accuracy** ensures that fraudulent claims are flagged with high reliability, allowing for quicker investigations and resource allocation, which could result in significant cost savings for healthcare systems.
 
 - **Operational Efficiency** 
