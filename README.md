@@ -278,13 +278,13 @@ This project lays the foundation for an efficient, automated healthcare fraud de
 
 ## Future Scope
 
-- **Continuous Monitoring and Real-Time Integration**
+- **Continuous Monitoring and Real-Time Integration:**
   The model's ability to predict fraud in real-time, through integration into a healthcare provider’s claims system, could enable **continuous fraud monitoring**, preventing fraudulent activities before they impact the healthcare system.
 
-- **False Positive Management** 
+- **False Positive Management:** 
   While the model is highly accurate, **false positives** still remain a challenge. Introducing post-prediction analysis and a **scoring system** to prioritize fraudulent claims based on severity could help reduce unnecessary investigations and optimize resource allocation.
 
-- **Anomaly Detection**
+- **Anomaly Detection:**
   Implement **unsupervised learning models** to detect emerging or unknown fraud patterns that may not be captured by supervised models.
 
 ---
