@@ -33,19 +33,19 @@ Date: 12/11/2024
 ---
 
 ## Executive Summary
-The project Detecting Fraudulent Healthcare Providers Using Machine Learning seeks to address the pervasive issue of fraudulent activities within Medicare claims data using advanced machine learning techniques. Healthcare fraud, including practices like inflated billing and falsified services, is a major concern that leads to financial losses and undermines the integrity of the healthcare system. By applying various machine learning models such as Logistic Regression, Random Forest, XGBoost, Gradient Boosting, and LightGBM, the project identifies patterns indicative of fraud in the claims data. Additionally, the class imbalance in the dataset is mitigated using SMOTE (Synthetic Minority Over-sampling Technique), which enhances the model’s ability to accurately detect fraudulent claims. The project also features an interactive Streamlit dashboard, which allows healthcare administrators to conduct visualize key insights, predict fraud/non-fraud facilitating more informed decision-making and improving overall fraud prevention efforts.
+The project Detecting Fraudulent Healthcare Providers Using Machine Learning seeks to address the pervasive issue of fraudulent activities within Medicare claims data using advanced machine learning techniques.Healthcare fraud, including practices like inflated billing and falsified services, is a major concern that leads to financial losses and undermines the integrity of the healthcare system. By applying various machine learning models such as Logistic Regression, Random Forest, XGBoost, Gradient Boosting, and LightGBM, the project identifies patterns indicative of fraud in the claims data. Additionally, the class imbalance in the dataset is mitigated using SMOTE (Synthetic Minority Over-sampling Technique), which enhances the model’s ability to accurately detect fraudulent claims. The project also features an interactive Streamlit dashboard, which allows healthcare administrators to conduct visualize key insights, predict fraud/non-fraud facilitating more informed decision-making and improving overall fraud prevention efforts.
 
 ### Key Findings:
 - **LightGBM** achieved 98% accuracy, demonstrating its strong ability to detect fraudulent providers with minimal bias.
 - Important features such as **ProviderFraudRate** and **ClaimsPerProvider** were identified as key indicators of fraud.
 - **SMOTE** significantly enhanced model performance by addressing class imbalance in the dataset.
-- The **Streamlit dashboard** provided an intuitive interface for real-time fraud prediction and decision-making.
+- The **Streamlit dashboard** provided an intuitive interface for fraud prediction and decision-making.
 
 ---
 
 ## Introduction
 
-Healthcare fraud, especially within Medicare, leads to significant financial losses and affects the quality of care. Traditional fraud detection methods are ineffective due to the high volume and complexity of claims data. This project applies **machine learning algorithms** to automate fraud detection, offering a scalable and efficient solution. An interactive **Streamlit dashboard** was built to visualize fraud patterns and allow real-time predictions, enabling healthcare administrators to make informed decisions swiftly.
+Healthcare fraud, especially within Medicare, leads to significant financial losses and affects the quality of care. Traditional fraud detection methods are ineffective due to the high volume and complexity of claims data. This project applies **machine learning algorithms** to automate fraud detection, offering a scalable and efficient solution. An interactive **Streamlit dashboard** was built to visualize fraud patterns and allow  predictions, enabling healthcare administrators to make informed decisions swiftly.
 
 ---
 
@@ -72,7 +72,7 @@ Healthcare fraud is a pervasive problem that drains financial resources and jeop
 
 ## Objectives
 - **Detect fraudulent healthcare providers** using machine learning algorithms.
-- **Build an interactive Streamlit dashboard** for real-time predictions and data visualizations.
+- **Build an interactive Streamlit dashboard** for predictions and data visualizations.
 
 ---
 
@@ -151,17 +151,26 @@ Key features such as **ProviderFraudRate** and **ClaimsPerProvider** were engine
 
 <img width="436" alt="image" src="https://github.com/user-attachments/assets/3022003a-3fc2-4f6c-b48c-a88312715212">
 
-- CostPerDay: This feature is moderately correlated with potential fraud (0.11) and can help identify unusually high costs per day for providers, which could indicate fraud.
-- DeductibleRatio: With a very low correlation to potential fraud, this feature may be less impactful in identifying fraud but could provide additional context on healthcare cost structures.
-- ChronicConditionCount: This feature has a weak negative correlation with potential fraud, suggesting it might not strongly indicate fraudulent behavior but could be useful in understanding patient risk.
-- GenderCostRatio: Shows a weak positive correlation with potential fraud (0.09), which might be useful for detecting anomalies in cost allocation across genders.
-- ClaimsPerProvider: This feature strongly correlates with potential fraud (0.33), as a higher number of claims per provider could signal fraudulent activity.
-- AvgProviderReimbursement: Correlated at 0.21 with potential fraud, this feature is relevant for detecting discrepancies between expected and actual reimbursements, indicating potential fraud.
-- ProviderFraudRate: This column is highly correlated with potential fraud (0.85), making it one of the most critical features for detecting fraudulent behavior in healthcare providers.
-- CostPerCoverageMonth: Strong correlation with potential fraud (0.74), suggesting that unusually high costs per coverage month could be a strong indicator of fraudulent activity.
-- DurationReimbursement: With a weaker correlation to potential fraud (0.05), this feature might not be highly indicative of fraud but could still be valuable in a broader fraud detection model.
-- StateFraudRate: While not highly correlated with potential fraud, this feature (0.28) provides geographic context, potentially useful for understanding state-level fraud trends.
-- PotentialFraud: This is the target variable in your analysis, with a correlation of 1, making it central to the project for identifying fraudulent healthcare providers.
+### Feature Correlations with Potential Fraud
+
+| Feature                  | Correlation with Potential Fraud | Description |
+|--------------------------|----------------------------------|-------------|
+| **CostPerDay**            | 0.11                             | Moderately correlated with potential fraud. Can help identify unusually high costs per day for providers, which may indicate fraud. |
+| **DeductibleRatio**       | Low (insignificant)              | Very low correlation. Less impactful for fraud detection, but may provide context on healthcare cost structures. |
+| **ChronicConditionCount** | -0.10                            | Weak negative correlation. Suggests that chronic conditions might not strongly indicate fraudulent behavior but can help assess patient risk. |
+| **GenderCostRatio**       | 0.09                             | Weak positive correlation. May help detect anomalies in cost allocation across genders. |
+| **ClaimsPerProvider**     | 0.33                             | Strong correlation. A higher number of claims per provider could signal fraudulent activity. |
+| **AvgProviderReimbursement** | 0.21                          | Relevant for detecting discrepancies between expected and actual reimbursements, indicating potential fraud. |
+| **ProviderFraudRate**     | 0.85                             | Highly correlated. One of the most critical features for detecting fraudulent behavior in healthcare providers. |
+| **CostPerCoverageMonth**  | 0.74                             | Strong correlation. Unusually high costs per coverage month are a strong indicator of fraudulent activity. |
+| **DurationReimbursement** | 0.05                             | Weak correlation. Might not be highly indicative of fraud but still valuable in broader fraud detection models. |
+| **StateFraudRate**        | 0.28                             | Moderate correlation. Provides geographic context, which may be useful for understanding state-level fraud trends. |
+| **PotentialFraud**        | 1.0                              | The target variable. Its correlation with itself is 1, making it central to the analysis. |
+
+### Key Insights:
+- **ProviderFraudRate** and **CostPerCoverageMonth** are among the most significant features for fraud detection, offering strong predictive power.
+- **ClaimsPerProvider** and **AvgProviderReimbursement** also play an important role in identifying discrepancies and anomalies that may indicate fraudulent behavior.
+- Features like **StateFraudRate** and **ChronicConditionCount** provide additional context and could be useful in broader fraud detection strategies.
 
 <img width="356" alt="image" src="https://github.com/user-attachments/assets/b28d1cd4-fd73-4c51-833d-b946d6cc7c41">
 
@@ -169,7 +178,6 @@ Key features such as **ProviderFraudRate** and **ClaimsPerProvider** were engine
 The process begins by preparing the data, where categorical variables are one-hot encoded, and the dataset is split into training and testing sets. The presence of infinite and NaN values is checked and handled by replacing infinite values with the column maximum. A Random Forest model is then trained on the data, and feature importance is computed to identify the top features most strongly correlated with the target variable "PotentialFraud.The top features are displayed to guide model implementation. This analysis is essential for further model development and integration into a Streamlit dashboard for interactive fraud detection.
 
 <img width="356" alt="image" src="https://github.com/user-attachments/assets/12926589-f2fc-4788-98b8-9c24eedd67b0">
-
 
 
 ### Modeling and Analysis
@@ -201,7 +209,6 @@ Several machine learning models were trained, including Logistic Regression, Ran
   - **F1-Score**: 0.9832
   - **AUC**: 0.9981
 - LightGBM is particularly effective for fraud detection due to its ability to handle class imbalance and its strong generalization performance.
-
 
 
 ## Streamlit Dashboard
