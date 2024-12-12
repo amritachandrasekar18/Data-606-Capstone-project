@@ -191,10 +191,8 @@ Several machine learning models were trained, including Logistic Regression, Ran
 
 
 ## Models Comparison
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/d80d0312-2bfe-488e-82af-4fc046e68c2f">
-
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/d80d0312-2bfe-488e-82af-4fc046e68c2f">
 <img width="286" alt="image" src="https://github.com/user-attachments/assets/846bea8a-8765-4640-843d-0dcfdc23ba06">
-
 
 - **LightGBM** demonstrated the highest performance across multiple metrics:
   - **Recall**: 97.26%
