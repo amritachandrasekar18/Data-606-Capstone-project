@@ -35,7 +35,7 @@ Date: 12/11/2024
 ## Executive Summary
 The project Detecting Fraudulent Healthcare Providers Using Machine Learning seeks to address the pervasive issue of fraudulent activities within Medicare claims data using advanced machine learning techniques.Healthcare fraud, including practices like inflated billing and falsified services, is a major concern that leads to financial losses and undermines the integrity of the healthcare system. By applying various machine learning models such as Logistic Regression, Random Forest, XGBoost, Gradient Boosting, and LightGBM, the project identifies patterns indicative of fraud in the claims data. Additionally, the class imbalance in the dataset is mitigated using SMOTE (Synthetic Minority Over-sampling Technique), which enhances the model’s ability to accurately detect fraudulent claims. The project also features an interactive Streamlit dashboard, which allows healthcare administrators to conduct visualize key insights, predict fraud/non-fraud facilitating more informed decision-making and improving overall fraud prevention efforts.
 
-### Key Findings:
+### Key Findings
 - **LightGBM** achieved 98% accuracy, demonstrating its strong ability to detect fraudulent providers with minimal bias.
 - Important features such as **ProviderFraudRate** and **ClaimsPerProvider** were identified as key indicators of fraud.
 - **SMOTE** significantly enhanced model performance by addressing class imbalance in the dataset.
@@ -191,10 +191,10 @@ Several machine learning models were trained, including Logistic Regression, Ran
 ### XGBoost
 <img width="170" alt="image" src="https://github.com/user-attachments/assets/ad07376a-b9c7-492d-bd82-8e1455875add">
 
-### Lightgbm
+### LightGBM
 <img width="196" alt="image" src="https://github.com/user-attachments/assets/df1861ad-0335-4a35-bb72-219ceca08972">
 
-### gradient boosting
+### Gradient Boosting
 <img width="194" alt="image" src="https://github.com/user-attachments/assets/0c489e76-5676-4a43-bde3-f2528391a807">
 
 
@@ -244,38 +244,66 @@ The Streamlit app was deployed on the **Streamlit Community Cloud**, making it e
 
 ---
 
-## Conclusions and Recommendations
+## Conclusion
+This project lays the foundation for an efficient, automated healthcare fraud detection system, combining machine learning, data engineering, and interactive tools. With future enhancements, it has the potential to drastically reduce fraud, optimize healthcare resources, and improve overall healthcare delivery.
 
-### Key Findings
-- **LightGBM** achieved an accuracy of 98%, with **ProviderFraudRate** being the most critical feature.
-- SMOTE improved performance by addressing class imbalance.
+## Results and Insights
 
-### Recommendations
-- Implement continuous fraud monitoring using the LightGBM model.
-- Expand features with additional data sources for better fraud detection.
+### 1. Model Performance and Accuracy
+- **LightGBM Outperforms Other Models**:  
+  The LightGBM model achieved an overall **accuracy of 98%**, with a balanced **F1-score of 0.98**, indicating strong predictive capabilities for both fraudulent and non-fraudulent healthcare providers. This suggests that LightGBM is highly reliable for detecting fraud with minimal bias, making it well-suited for real-world deployment in fraud detection systems.
+
+- **Key Metrics**:
+  - **Recall**: The LightGBM model achieved a **test recall of 0.9726**, ensuring that the majority of fraudulent claims were correctly identified. Recall is crucial in fraud detection, where false negatives can be costly.
+  - **AUC**: The **AUC score of 0.9981** reflects the model's exceptional ability to distinguish between fraud and non-fraud cases, providing a highly reliable fraud detection mechanism.
+
+### 2. Addressing Class Imbalance
+- **Impact of SMOTE on Performance**:  
+  The application of **SMOTE** (Synthetic Minority Over-sampling Technique) successfully addressed the class imbalance issue, where fraudulent claims are far fewer than legitimate claims. By generating synthetic samples for the minority class (fraudulent claims), SMOTE helped the model identify fraudulent behavior more effectively, leading to improved recall and F1-scores.
+
+- **Balanced Dataset**:  
+  After applying SMOTE, the dataset became more balanced, preventing the model from being biased towards the majority class (non-fraudulent claims). This ensures that the model can detect fraud with higher sensitivity.
+
+### 3. Feature Importance and Insights
+- **Critical Fraud Indicators**:  
+  Feature engineering revealed that certain features, particularly **ProviderFraudRate** (0.85 correlation with fraud), **ClaimsPerProvider** (0.33 correlation with fraud), and **CostPerCoverageMonth** (0.74 correlation with fraud), are the strongest indicators of fraudulent behavior.
+
+  - **ProviderFraudRate**: A high **ProviderFraudRate** indicates that a provider has a history of submitting fraudulent claims, making it a key indicator for fraud detection.
+  - **ClaimsPerProvider**: A higher number of claims per provider strongly correlates with fraud, suggesting that fraudsters may submit more claims to exploit the system.
+  - **CostPerCoverageMonth**: Unusually high costs per coverage month were identified as an indicator of fraudulent billing practices.
+
+### 4. Insights from Streamlit Dashboard
+- **Real-Time Fraud Prediction**:  
+  The **Streamlit dashboard** enhanced the practical application of the fraud detection model by allowing healthcare administrators to interactively assess fraud risks. The dashboard provides real-time predictions on whether a healthcare provider is potentially fraudulent based on the data entered.
+
+  - **User Interaction**: Healthcare professionals can easily input specific provider data and receive instant predictions, helping them identify suspicious providers swiftly.
+  - **Data Visualizations**: The dashboard displays key visualizations like fraud distribution by state, feature importance, and fraud vs. non-fraud counts. These visualizations help stakeholders better understand fraud patterns and make data-driven decisions in a user-friendly format.
+
+### 5. Practical and Financial Impact
+- **Cost Reduction**:  
+  By detecting fraudulent healthcare providers early, the model can prevent financial losses from fraudulent claims. The **98% accuracy** ensures that fraudulent claims are flagged with high reliability, allowing for quicker investigations and resource allocation, which could result in significant cost savings for healthcare systems.
+
+- **Operational Efficiency**:  
+  The implementation of the machine learning model and the Streamlit dashboard enables **automated fraud detection**, reducing the need for manual claim reviews. This leads to faster identification of fraudulent claims, enhancing operational efficiency within healthcare organizations.
+
+## Future Scope
+
+- **Continuous Monitoring and Real-Time Integration**
+  The model's ability to predict fraud in real-time, through integration into a healthcare provider’s claims system, could enable **continuous fraud monitoring**, preventing fraudulent activities before they impact the healthcare system.
+
+- **False Positive Management** 
+  While the model is highly accurate, **false positives** still remain a challenge. Introducing post-prediction analysis and a **scoring system** to prioritize fraudulent claims based on severity could help reduce unnecessary investigations and optimize resource allocation.
+
+- **Anomaly Detection**
+  Implement **unsupervised learning models** to detect emerging or unknown fraud patterns that may not be captured by supervised models.
 
 ---
 
-## Future Work
-
-1. **Anomaly Detection**: Incorporate unsupervised models to detect unknown fraud patterns.
-2. **Real-time Integration**: Integrate the model with live claim systems for faster fraud detection.
-
----
-
-## References
+## **References**
 1. **Bauder, R.A., & Khoshgoftaar, T.M. (2017)**. *Medicare fraud detection using machine learning methods.* IEEE ICMLA.
 2. **Garmdareh, M.S., et al. (2023)**. *A Machine Learning-based Approach for Medical Insurance Anomaly Detection by Predicting Indirect Outpatients' Claim Price.* IEEE ICWR.
 
 ---
-## Project links
-
-- [Google Colab Notebook: Data Merging](https://colab.research.google.com/drive/1FB09GuFramK_HQWfzsPQPdcUB4zEtXGN?usp=sharing)
-
-### Additional Colab Notebooks
-- [Google Colab Notebook 2: Data Cleaning](https://colab.research.google.com/drive/1-Nd6d3xuog2EPYfJ3EoWyfh3mE_6RTMD?usp=chrome_ntp)
-- [Google Colab Notebook 3: Data Visualizations](https://colab.research.google.com/drive/1Flk6lF3OfQR4pJCm_cn3AVsGVold49TF?usp=chrome_ntp)
-- [Google Colab Notebook 4: Machine Learning Model ](https://colab.research.google.com/drive/1hmXbl07e4LIiAs2qVi24uVYqtMmaCGY7?usp=chrome_ntp)
 
 ### Streamlit App
 - [Interactive Streamlit App for Visualization](https://amritachandrasekar18-data-690-capstone-project-app-pwbhji.streamlit.app/)
