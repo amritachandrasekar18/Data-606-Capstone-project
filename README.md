@@ -1,8 +1,9 @@
 # Detecting Fraudulent Healthcare Providers Using Machine Learning
 
-** Data 606 Capstone Project in Data Science **  
+**Data 606 Capstone Project in Data Science**  
 Under the guidance of Zeynep Kacar  
-By: **Amrita Chandrasekar (NH53017)**  
+By
+**Amrita Chandrasekar (NH53017)**  
 Date: 12/11/2024  
 
 ## Table of Contents
