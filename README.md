@@ -112,7 +112,7 @@ The dataset for this project is too large to be uploaded directly to GitHub. You
 
 ## Challenges
 
-**Class Imbalance**: 
+**Class Imbalance**
 Fraudulent claims are a minority class, leading to biased models.
 
 <img width="274" alt="image" src="https://github.com/user-attachments/assets/ba7e6c0a-d05b-4314-9cdd-cc3a1af1dc35">
@@ -167,7 +167,7 @@ Key features such as **ProviderFraudRate** and **ClaimsPerProvider** were engine
 | **StateFraudRate**        | 0.28                             | Moderate correlation. Provides geographic context, which may be useful for understanding state-level fraud trends. |
 | **PotentialFraud**        | 1.0                              | The target variable. Its correlation with itself is 1, making it central to the analysis. |
 
-### Key Insights:
+### Key Insights
 - **ProviderFraudRate** and **CostPerCoverageMonth** are among the most significant features for fraud detection, offering strong predictive power.
 - **ClaimsPerProvider** and **AvgProviderReimbursement** also play an important role in identifying discrepancies and anomalies that may indicate fraudulent behavior.
 - Features like **StateFraudRate** and **ChronicConditionCount** provide additional context and could be useful in broader fraud detection strategies.
@@ -215,7 +215,7 @@ Several machine learning models were trained, including Logistic Regression, Ran
 
 ### Key Features
 - **Fraud predictions**: Users can input data to get immediate predictions on whether a healthcare provider is fraudulent.
-- **Visualizations**:
+- **Visualizations**
   - **Fraud vs. Non-Fraud distribution**
   - **State-wise fraud rates**
   - **Correlation heatmap** for key features
@@ -253,7 +253,7 @@ This project lays the foundation for an efficient, automated healthcare fraud de
 - **LightGBM Outperforms Other Models**:  
   The LightGBM model achieved an overall **accuracy of 98%**, with a balanced **F1-score of 0.98**, indicating strong predictive capabilities for both fraudulent and non-fraudulent healthcare providers. This suggests that LightGBM is highly reliable for detecting fraud with minimal bias, making it well-suited for real-world deployment in fraud detection systems.
 
-- **Key Metrics**:
+- **Key Metrics**
   - **Recall**: The LightGBM model achieved a **test recall of 0.9726**, ensuring that the majority of fraudulent claims were correctly identified. Recall is crucial in fraud detection, where false negatives can be costly.
   - **AUC**: The **AUC score of 0.9981** reflects the model's exceptional ability to distinguish between fraud and non-fraud cases, providing a highly reliable fraud detection mechanism.
 
@@ -261,7 +261,7 @@ This project lays the foundation for an efficient, automated healthcare fraud de
 - **Impact of SMOTE on Performance**:  
   The application of **SMOTE** (Synthetic Minority Over-sampling Technique) successfully addressed the class imbalance issue, where fraudulent claims are far fewer than legitimate claims. By generating synthetic samples for the minority class (fraudulent claims), SMOTE helped the model identify fraudulent behavior more effectively, leading to improved recall and F1-scores.
 
-- **Balanced Dataset**:  
+- **Balanced Dataset**  
   After applying SMOTE, the dataset became more balanced, preventing the model from being biased towards the majority class (non-fraudulent claims). This ensures that the model can detect fraud with higher sensitivity.
 
 ### 3. Feature Importance and Insights
@@ -273,7 +273,7 @@ This project lays the foundation for an efficient, automated healthcare fraud de
   - **CostPerCoverageMonth**: Unusually high costs per coverage month were identified as an indicator of fraudulent billing practices.
 
 ### 4. Insights from Streamlit Dashboard
-- **Real-Time Fraud Prediction**:  
+- **Real-Time Fraud Prediction**
   The **Streamlit dashboard** enhanced the practical application of the fraud detection model by allowing healthcare administrators to interactively assess fraud risks. The dashboard provides real-time predictions on whether a healthcare provider is potentially fraudulent based on the data entered.
 
   - **User Interaction**: Healthcare professionals can easily input specific provider data and receive instant predictions, helping them identify suspicious providers swiftly.
@@ -283,7 +283,7 @@ This project lays the foundation for an efficient, automated healthcare fraud de
 - **Cost Reduction**:  
   By detecting fraudulent healthcare providers early, the model can prevent financial losses from fraudulent claims. The **98% accuracy** ensures that fraudulent claims are flagged with high reliability, allowing for quicker investigations and resource allocation, which could result in significant cost savings for healthcare systems.
 
-- **Operational Efficiency**:  
+- **Operational Efficiency** 
   The implementation of the machine learning model and the Streamlit dashboard enables **automated fraud detection**, reducing the need for manual claim reviews. This leads to faster identification of fraudulent claims, enhancing operational efficiency within healthcare organizations.
 
 ## Future Scope
